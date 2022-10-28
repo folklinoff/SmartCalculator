@@ -1,3 +1,5 @@
+package com.example.smartcalculator.Solution;
+
 import java.util.TreeMap;
 
 public interface OperatorAction {

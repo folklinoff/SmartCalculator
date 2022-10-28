@@ -1,4 +1,4 @@
-package Solver;
+package com.example.smartcalculator.Solution.Solver;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -22,11 +22,13 @@ public abstract class Solver {
 
     public static ArrayList<Double> getRoots(TreeMap<Integer, Integer> coefficients)
     {
-        return switch (getEquationType(coefficients)) {
+        /*return switch (getEquationType(coefficients)) {
             case value -> ConstantEquationSolver.getRoots(coefficients);
             case linearEquation -> LinearEquationSolver.getRoots(coefficients);
             case quadraticEquation -> QuadraticEquationSolver.getRoots(coefficients);
             case higherOrderEquation -> HigherOrderEquationSolver.getRoots(coefficients);
-        };
+        };*/
+    return new ArrayList<>();
+
     }
 }

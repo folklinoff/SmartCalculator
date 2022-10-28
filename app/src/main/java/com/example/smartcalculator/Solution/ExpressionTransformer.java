@@ -1,3 +1,5 @@
+package com.example.smartcalculator.Solution;
+
 public class ExpressionTransformer {
     public static String deleteSpaces(String expression)
     {

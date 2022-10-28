@@ -1,3 +1,5 @@
+package com.example.smartcalculator.Solution;
+
 public class Main {
     public static void main(String[] args) {
         String[] expressions = {
