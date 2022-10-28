@@ -1,3 +1,5 @@
+package com.example.smartcalculator.Solution;
+
 public class Decomposer {
     public static boolean isOperand(String expression)
     {

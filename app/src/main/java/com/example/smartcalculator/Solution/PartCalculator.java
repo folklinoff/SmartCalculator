@@ -1,4 +1,5 @@
-import org.jetbrains.annotations.Contract;
+package com.example.smartcalculator.Solution;
+
 
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public class PartCalculator {
         Coefficients mult = multiplyTwoTrees(map1, map2);
     }
 
-    @Contract(pure = true)
+    //@Contract(pure = true)
     public static Coefficients subtractTwoTrees(Coefficients map1, Coefficients map2)
     {
         Coefficients result = new Coefficients(map1);
@@ -39,7 +40,7 @@ public class PartCalculator {
         return result;
     }
 
-    @Contract(pure = true)
+    //@Contract(pure = true)
     public static Coefficients addTwoTrees(Coefficients map1, Coefficients map2)
     {
         Coefficients result = new Coefficients(map1);
@@ -57,7 +58,7 @@ public class PartCalculator {
         return result;
     }
 
-    @Contract(pure = true)
+    //@Contract(pure = true)
     public static Coefficients multiplyTwoTrees(Coefficients map1, Coefficients map2)
     {
         Coefficients result = new Coefficients();

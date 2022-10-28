@@ -1,3 +1,5 @@
+package com.example.smartcalculator.Solution;
+
 import java.util.*;
 
 public class Coefficients extends TreeMap<Integer, Integer> {

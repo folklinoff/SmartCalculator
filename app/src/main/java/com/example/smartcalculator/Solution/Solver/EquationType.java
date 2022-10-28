@@ -1,4 +1,4 @@
-package Solver;
+package com.example.smartcalculator.Solution.Solver;
 
 import java.util.Map;
 
