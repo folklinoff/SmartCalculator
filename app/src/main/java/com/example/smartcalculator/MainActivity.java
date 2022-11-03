@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentTransaction;
-
+import android.view.View.OnClickListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -18,7 +18,7 @@ import com.example.smartcalculator.Solution.FragmentNumbers;
 import com.example.smartcalculator.Solution.FragmentSigns;
 import com.example.smartcalculator.Solution.Solver.FragmentSolution;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnClickListener {
 
 private final String TAG=this.getClass().getSimpleName();//для логов глобальная переменнная почему не статик
 
@@ -26,45 +26,20 @@ FragmentSigns fragmentSigns=new FragmentSigns();
 FragmentNumbers fragmentNumbers=new FragmentNumbers();
 FragmentSolution fragmentSolution=new FragmentSolution();
 
+    final Button ButtonSigns=(Button)findViewById(R.id.buttonSigns);
+    final Button ButtonNumbers=(Button)findViewById(R.id.buttonNumbers);
+    final Button ButtonSolution=(Button)findViewById(R.id.buttonSolution);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button ButtonSigns=(Button)findViewById(R.id.buttonSigns);
-        Button ButtonNumbers=(Button)findViewById(R.id.buttonNumbers);
-        Button ButtonSolution=(Button)findViewById(R.id.buttonSolution);
+        setNewFragment(fragmentSigns);
 
-
-
-      setNewFragment(fragmentSigns);
-
+        ButtonNumbers.setOnClickListener( this);
+        ButtonSolution.setOnClickListener( this);
         ButtonSigns.setOnClickListener(this);
-        ButtonNumbers.setOnClickListener(this);
-        ButtonSolution.setOnClickListener(this);
-
-        View.OnClickListener onClickListener=new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()){
-                    case R.id.buttonSolution:
-                      setNewFragment(fragmentSolution);
-                        break;
-                    case R.id.buttonNumbers:
-                        setNewFragment(fragmentNumbers);
-                        Log.i(TAG,"fragmentNumbers");
-                        break;
-                    case R.id.buttonSigns:
-                        setNewFragment(fragmentSigns);
-                        break;
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + v.getId());
-                }
-            }
-        };
-
-
     }
 
     private void setNewFragment(Fragment f) {
@@ -98,4 +73,21 @@ FragmentSolution fragmentSolution=new FragmentSolution();
     }
 
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.buttonSolution:
+                setNewFragment(fragmentSolution);
+                break;
+            case R.id.buttonNumbers:
+                setNewFragment(fragmentNumbers);
+                Log.i(TAG,"fragmentNumbers");
+                break;
+            case R.id.buttonSigns:
+                setNewFragment(fragmentSigns);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + v.getId());
+        }
+    }
 }

@@ -7,24 +7,27 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.smartcalculator.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentSigns#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FragmentSigns extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+public class FragmentSigns extends Fragment implements View.OnClickListener {
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    Button ButtonMinus;
+    Button ButtonPlus;
+    Button ButtonMultiply;
+    Button ButtonEqual;
+    Button ButtonLeftBracket;
+    Button ButtonRightBracket;
+    Button ButtonDivision;
+    Button ButtonSQRT;
 
     public FragmentSigns() {
         // Required empty public constructor
@@ -38,7 +41,7 @@ public class FragmentSigns extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment FragmentSigns.
      */
-    // TODO: Rename and change types and number of parameters
+
     public static FragmentSigns newInstance(String param1, String param2) {
         FragmentSigns fragment = new FragmentSigns();
         Bundle args = new Bundle();
@@ -52,15 +55,32 @@ public class FragmentSigns extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam1 = getArguments().getString(ARG_PARAM1);//это текстовый лайаут фрагмента если надо будет изменять?
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,//связка с лайаутом
                              Bundle savedInstanceState) {
+        View view=inflater.inflate(R.layout.fragment_signs, container, false);
+
+        ButtonMinus= (Button) view.findViewById(R.id.buttonMinus);
+        ButtonPlus= (Button) view.findViewById(R.id.buttonPlus);
+        ButtonMultiply= (Button) view.findViewById(R.id.buttonMultiply);
+        ButtonDivision= (Button) view.findViewById(R.id.buttonDivision);
+        ButtonEqual= (Button) view.findViewById(R.id.buttonEqual);
+        ButtonSQRT= (Button) view.findViewById(R.id.buttonSqrt);
+        ButtonLeftBracket= (Button) view.findViewById(R.id.buttonleftbracket);
+        ButtonRightBracket= (Button) view.findViewById(R.id.buttonrightbracket);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_signs, container, false);
+        return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

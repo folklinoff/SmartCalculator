@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.smartcalculator.R;
 
@@ -15,16 +16,28 @@ import com.example.smartcalculator.R;
  * Use the {@link FragmentNumbers#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentNumbers extends Fragment {
+public class FragmentNumbers extends Fragment implements View.OnClickListener {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
+
+    Button Button0;
+    Button Button1;
+    Button Button2;
+    Button Button3;
+    Button Button4;
+    Button Button5;
+    Button Button6;
+    Button Button7;
+    Button Button8;
+    Button Button9;
+    Button ButtonDot;
+    Button ButtonX;
 
     public FragmentNumbers() {
         // Required empty public constructor
@@ -38,7 +51,7 @@ public class FragmentNumbers extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment FragmentNumbers.
      */
-    // TODO: Rename and change types and number of parameters
+
     public static FragmentNumbers newInstance(String param1, String param2) {
         FragmentNumbers fragment = new FragmentNumbers();
         Bundle args = new Bundle();
@@ -60,7 +73,49 @@ public class FragmentNumbers extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_numbers, container, false);
+        View view = inflater.inflate(R.layout.fragment_numbers, container, false);
+        Button1 = (Button) view.findViewById(R.id.button1);
+        Button2 = (Button) view.findViewById(R.id.button2);
+        Button0 = (Button) view.findViewById(R.id.button0);
+        Button3 = (Button) view.findViewById(R.id.button3);
+        Button4 = (Button) view.findViewById(R.id.button4);
+        Button5 = (Button) view.findViewById(R.id.button5);
+        Button6 = (Button) view.findViewById(R.id.button6);
+        Button7 = (Button) view.findViewById(R.id.button7);
+        Button8 = (Button) view.findViewById(R.id.button8);
+        Button9 = (Button) view.findViewById(R.id.button9);
+        ButtonDot = (Button) view.findViewById(R.id.button_dot);
+        ButtonX = (Button) view.findViewById(R.id.buttonX);
+        return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button0:
+                break;
+            case R.id.button1:
+                break;
+            case R.id.button2:
+                break;
+            case R.id.button3:
+                break;
+            case R.id.button4:
+                break;
+            case R.id.button5:
+                break;
+            case R.id.button6:
+                break;
+            case R.id.button7:
+                break;
+            case R.id.button8:
+                break;
+            case R.id.button9:
+                break;
+            case R.id.button_dot:
+                break;
+            case R.id.buttonX:
+                break;
+        }
     }
 }
