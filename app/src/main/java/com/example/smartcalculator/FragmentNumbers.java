@@ -102,9 +102,6 @@ public class FragmentNumbers extends Fragment implements View.OnClickListener{
         ButtonDot.setOnClickListener(this);
         ButtonX.setOnClickListener(this);
 
-
-
-
         return view;
     }
 

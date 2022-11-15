@@ -33,6 +33,7 @@ FragmentSolution fragmentSolution=new FragmentSolution();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         EditText editText=(EditText)findViewById(R.id.editTextTextMultiLine);
 
@@ -47,7 +48,7 @@ FragmentSolution fragmentSolution=new FragmentSolution();
         ButtonSolution.setOnClickListener( this);
         ButtonSigns.setOnClickListener(this);
 
-       /* manager=getSupportFragmentManager();*/
+
 
     }
     @Override
@@ -62,7 +63,15 @@ FragmentSolution fragmentSolution=new FragmentSolution();
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
@@ -72,7 +81,7 @@ FragmentSolution fragmentSolution=new FragmentSolution();
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
-        setNewFragment(fragmentNumbers);
+
         super.onRestoreInstanceState(savedInstanceState);
     }
 
@@ -96,14 +105,11 @@ FragmentSolution fragmentSolution=new FragmentSolution();
 
         int id=item.getItemId();
         switch (id){
-            case R.id.menuSupport://как использовать калькуль
-                Toast.makeText(MainActivity.this,"It is not ready",Toast.LENGTH_LONG).show();
-                Intent intent=new Inten
-               startActivity();
+            case R.id.menuThemes://как использовать калькуль
+                Toast.makeText(MainActivity.this,"Themes is not ready",Toast.LENGTH_LONG).show();
                 break;
-            case R.id.menuHelp://решение
-                Toast.makeText(MainActivity.this,"It is not ready too",Toast.LENGTH_LONG).show();
-                //setContentView(R.layout.activity_themes);
+            case R.id.menuCalculator://решение
+                Toast.makeText(MainActivity.this,"Сalculator is not ready",Toast.LENGTH_LONG).show();
                 break;
             default:
                 break;
