@@ -3,8 +3,12 @@ package com.example.smartcalculator;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainerView;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+
+import android.content.Intent;
+import android.os.PersistableBundle;
 import android.view.View.OnClickListener;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,10 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.smartcalculator.Solution.FragmentNumbers;
-import com.example.smartcalculator.Solution.FragmentSigns;
 import com.example.smartcalculator.Solution.Solver.FragmentSolution;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
@@ -26,28 +29,50 @@ FragmentSigns fragmentSigns=new FragmentSigns();
 FragmentNumbers fragmentNumbers=new FragmentNumbers();
 FragmentSolution fragmentSolution=new FragmentSolution();
 
-    final Button ButtonSigns=(Button)findViewById(R.id.buttonSigns);
-    final Button ButtonNumbers=(Button)findViewById(R.id.buttonNumbers);
-    final Button ButtonSolution=(Button)findViewById(R.id.buttonSolution);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        EditText editText=(EditText)findViewById(R.id.editTextTextMultiLine);
 
         setNewFragment(fragmentSigns);
+
+
+        final Button ButtonSigns=(Button)findViewById(R.id.buttonSigns);
+        final Button ButtonNumbers=(Button)findViewById(R.id.buttonNumbers);
+        final Button ButtonSolution=(Button)findViewById(R.id.buttonSolution);
 
         ButtonNumbers.setOnClickListener( this);
         ButtonSolution.setOnClickListener( this);
         ButtonSigns.setOnClickListener(this);
+
+       /* manager=getSupportFragmentManager();*/
+
+
     }
+
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+
+        super.onSaveInstanceState(outState, outPersistentState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+
+
 
     private void setNewFragment(Fragment f) {
         FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragmentContainerView,f);
+
+        ft.replace(R.id.fragmentContainerView,f);//add& || repl
         ft.commit();//это че сохраняет??
     }
-
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main,menu);
@@ -64,6 +89,7 @@ FragmentSolution fragmentSolution=new FragmentSolution();
                 break;
             case R.id.menuHelp://решение
                 Toast.makeText(MainActivity.this,"It is not ready too",Toast.LENGTH_LONG).show();
+                setContentView(R.layout.activity_themes);
                 break;
             default:
                 break;
@@ -81,7 +107,6 @@ FragmentSolution fragmentSolution=new FragmentSolution();
                 break;
             case R.id.buttonNumbers:
                 setNewFragment(fragmentNumbers);
-                Log.i(TAG,"fragmentNumbers");
                 break;
             case R.id.buttonSigns:
                 setNewFragment(fragmentSigns);
@@ -90,4 +115,6 @@ FragmentSolution fragmentSolution=new FragmentSolution();
                 throw new IllegalStateException("Unexpected value: " + v.getId());
         }
     }
+
+
 }

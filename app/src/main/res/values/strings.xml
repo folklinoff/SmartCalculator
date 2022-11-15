@@ -27,4 +27,6 @@
     <string name="buttonSqrt">sqrt</string>
     <string name="buttonLeftBracket">(</string>
     <string name="buttonRightBracket">)</string>
+    <string name="editTextMultiline">Write your burda</string>
+    <string name="hintText">write</string>
 </resources>
