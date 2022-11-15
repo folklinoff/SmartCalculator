@@ -104,6 +104,7 @@ public class FragmentNumbers extends Fragment implements View.OnClickListener{
 
        switch (view.getId()) {
             case R.id.button0:
+
                 str=  ((EditText)getActivity().findViewById(R.id.editTextTextMultiLine)).getText().toString();
                 str+='0';
                 ((EditText) getActivity().findViewById(R.id.editTextTextMultiLine)).setText(str);
