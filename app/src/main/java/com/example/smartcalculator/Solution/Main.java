@@ -14,17 +14,17 @@ public class Main {
         };
         for (String expression : expressions)
         {
-            test(expression);
+            System.out.println(test(expression));
         }
     }
 
-    public static void test(String expression) {
+    public static String test(String expression) {
         expression = ExpressionTransformer.deleteSpaces(expression);
         expression = ExpressionTransformer.addMultiplicationOperators(expression);
         expression = ExpressionTransformer.replaceMinuses(expression);
         Coefficients coefficients = Decomposer.decompose(expression);
         CoefficientsTransformer.deleteZeros(coefficients);
-        System.out.println(Solver.getAnswer(coefficients));
+        return Solver.getAnswer(coefficients).toString();
     }
 
 }
