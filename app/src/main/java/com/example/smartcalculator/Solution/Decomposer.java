@@ -4,7 +4,7 @@ public class Decomposer {
     public static boolean isOperand(String expression)
     {
         for (int i = 0; i < expression.length(); ++i)
-            if (("()+-/*^").contains(String.valueOf(expression.charAt(i))))
+            if (("()+-/*^=").contains(String.valueOf(expression.charAt(i))))
                 return false;
         return true;
     }

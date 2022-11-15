@@ -1,34 +1,51 @@
 package com.example.smartcalculator.Solution.Solver;
 
-import java.util.ArrayList;
+import com.example.smartcalculator.Solution.Coefficients;
+
 import java.util.Map;
-import java.util.TreeMap;
 
 public abstract class Solver {
-    public static int getMaxPower(TreeMap<Integer, Integer> coefficients)
+    public static Double getCoefficientAt(Coefficients coefficients, int power)
+    {
+        try
+        {
+            return coefficients.get(power);
+        }
+        catch (Exception e)
+        {
+            return 0.0d;
+        }
+    }
+
+    public static int getMaxPower(Coefficients coefficients)
     {
         int max = 0;
-        for (Map.Entry<Integer, Integer> entry : coefficients.entrySet())
+        for (Map.Entry<Integer, Double> entry : coefficients.entrySet())
         {
-            max = Math.max(entry.getKey(), max);
+            return entry.getKey();
         }
         return max;
     }
 
-    public static EquationType getEquationType (TreeMap<Integer, Integer> coefficients)
+    public static EquationType getEquationType (Coefficients coefficients)
     {
+        int highestPower = getMaxPower(coefficients);
         return EquationType.typeOf(Math.min(getMaxPower(coefficients), 3));
     }
 
-    public static ArrayList<Double> getRoots(TreeMap<Integer, Integer> coefficients)
+    public static Answer getAnswer(Coefficients coefficients)
     {
-        /*return switch (getEquationType(coefficients)) {
-            case value -> ConstantEquationSolver.getRoots(coefficients);
-            case linearEquation -> LinearEquationSolver.getRoots(coefficients);
-            case quadraticEquation -> QuadraticEquationSolver.getRoots(coefficients);
-            case higherOrderEquation -> HigherOrderEquationSolver.getRoots(coefficients);
-        };*/
-    return new ArrayList<>();
-
+        EquationType equationType = getEquationType(coefficients);
+        switch (getEquationType(coefficients)) {
+            case value:
+                return ConstantEquationSolver.getAnswer(coefficients);
+            case linearEquation:
+                return LinearEquationSolver.getAnswer(coefficients);
+            case quadraticEquation:
+                return QuadraticEquationSolver.getAnswer(coefficients);
+            case higherOrderEquation:
+                return HigherOrderEquationSolver.getAnswer(coefficients);
+        }
+        return new Answer("Cannot solve yet:(");
     }
 }
