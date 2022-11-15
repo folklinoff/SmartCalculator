@@ -5,12 +5,12 @@
     <item
         android:id="@+id/menuHelp"
         android:orderInCategory="2"
-        android:title="@string/menuHelp"
+        android:title="@string/menuTheme"
         app:showAsAction="never"/>
     <item
         android:id="@+id/menuSupport"
         android:orderInCategory="1"
-        android:title="@string/menuSupport"
+        android:title="@string/menuCalculator"
         app:showAsAction="never"/>
 
 </menu>
