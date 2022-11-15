@@ -1,13 +1,16 @@
 package com.example.smartcalculator.Solution.Solver;
 
+import com.example.smartcalculator.Solution.Coefficients;
+
 import java.util.ArrayList;
-import java.util.TreeMap;
 
 public class LinearEquationSolver extends Solver {
-    public static ArrayList<Double> getRoots(TreeMap<Integer, Integer> coefficients)
+    public static Answer getAnswer(Coefficients coefficients)
     {
         ArrayList<Double> roots = new ArrayList<>();
-        roots.add(-1.0*coefficients.get(1)/coefficients.get(0));
-        return roots;
+        Double a = getCoefficientAt(coefficients,1);
+        Double b = getCoefficientAt(coefficients,0);
+        roots.add(-1.0*b/a);
+        return new Answer(roots);
     }
 }
