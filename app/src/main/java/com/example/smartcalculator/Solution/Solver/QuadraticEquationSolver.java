@@ -1,18 +1,32 @@
 package com.example.smartcalculator.Solution.Solver;
 
-import java.util.ArrayList;
-import java.util.TreeMap;
+import com.example.smartcalculator.Solution.Coefficients;
 
-public class QuadraticEquationSolver extends Solver{
-    public static ArrayList<Double> getRoots(TreeMap<Integer, Integer> coefficients)
+import java.util.ArrayList;
+
+public class QuadraticEquationSolver extends Solver
+{
+
+    public static Answer getAnswer(Coefficients coefficients)
     {
-        ArrayList<Double> roots = new ArrayList<>();
-        int a = coefficients.get(2);
-        int b = coefficients.get(1);
-        int c = coefficients.get(0);
+        Double a = getCoefficientAt(coefficients,2);
+        Double b = getCoefficientAt(coefficients,1);
+        Double c = getCoefficientAt(coefficients,0);
         double D = b * b - 4 * a * c;
-        roots.add((-1.0*b+Math.sqrt(D))/(2 * a));
-        roots.add((-1.0*b-Math.sqrt(D))/(2 * a));
-        return roots;
+        if (D < 0)
+        {
+            return new Answer("Equation doesn't have any solutions");
+        }
+        ArrayList<Double> roots = new ArrayList<>();
+        if (D == 0)
+        {
+            roots.add((-1.0 * b) / (2 * a));
+        }
+        else
+        {
+            roots.add((-1.0*b+Math.sqrt(D))/(2 * a));
+            roots.add((-1.0*b-Math.sqrt(D))/(2 * a));
+        }
+        return new Answer(roots);
     }
 }

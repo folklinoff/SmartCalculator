@@ -1,11 +1,12 @@
 package com.example.smartcalculator.Solution.Solver;
 
-import java.util.ArrayList;
-import java.util.TreeMap;
+import com.example.smartcalculator.Solution.Coefficients;
 
-public class ConstantEquationSolver extends Solver{
-    public static ArrayList<Double> getRoots(TreeMap<Integer, Integer> coefficients)
+public class ConstantEquationSolver extends Solver
+{
+
+    public static Answer getAnswer(Coefficients coefficients)
     {
-        return new ArrayList<>();
+        return new Answer("Equation doesn't have any solutions");
     }
 }

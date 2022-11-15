@@ -1,6 +1,6 @@
 package com.example.smartcalculator.Solution;
 
-import java.util.*;
+import java.util.Map;
 
 public class Converter {
     public static Coefficients convertToCoefficients(String operand)
@@ -8,16 +8,16 @@ public class Converter {
         Coefficients result = new Coefficients();
         try
         {
-            result.put(0, Integer.parseInt(operand));
+            result.put(0, Double.parseDouble(operand));
         }
         catch (Exception e)
         {
-            result.put(1, 1);
+            result.put(1, 1.0);
         }
         return result;
     }
 
-    public static StringBuilder entryToAddend(Map.Entry<Integer, Integer> entry)
+    public static StringBuilder entryToAddend(Map.Entry<Integer, Double> entry)
     {
         StringBuilder result = new StringBuilder();
         if (entry.getValue() < 0)
@@ -39,11 +39,11 @@ public class Converter {
         return result;
     }
 
-    public static String convertCoefficientsToEquation(TreeMap<Integer, Integer> coefficients)
+    public static String convertCoefficientsToEquation(Coefficients coefficients)
     {
         boolean first = true;
         StringBuilder result = new StringBuilder();
-        for (Map.Entry<Integer, Integer> entry : coefficients.entrySet())
+        for (Map.Entry<Integer, Double> entry : coefficients.entrySet())
         {
             if (!first)
             {
