@@ -3,8 +3,7 @@ package com.example.smartcalculator;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -45,22 +44,6 @@ public class ThemesActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
     }
 
-
-
-
-/*
-        int id=item.getItemId();
-        switch (id) {
-            case R.id.menuCalculator:
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.menuThemes:
-                Toast.makeText(ThemesActivity.this,"Already run",Toast.LENGTH_LONG).show();
-                break;
-            default:
-                break;
-        }*/
 
 
 

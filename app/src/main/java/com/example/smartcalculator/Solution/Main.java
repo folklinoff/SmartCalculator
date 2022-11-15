@@ -24,6 +24,7 @@ public class Main {
         expression = ExpressionTransformer.replaceMinuses(expression);
         Coefficients coefficients = Decomposer.decompose(expression);
         CoefficientsTransformer.deleteZeros(coefficients);
+
         return Solver.getAnswer(coefficients).toString();
     }
 

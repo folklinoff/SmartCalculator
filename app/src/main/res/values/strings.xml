@@ -29,8 +29,13 @@
     <string name="buttonRightBracket">)</string>
     <string name="editTextMultiline">Write your burda</string>
     <string name="hintText">write</string>
-    <string name="fullsolution">FullSolution</string>
+
     <string name="button">Button</string>
-    <string name="themes">Themes</string>
+
     <string name="textview">TextView</string>
+    <string name="fullsolution">FullSolution</string>
+    <string name="themes">Themes</string>
+    <string name="substraction">Substraction</string>
+    <string name="division">Division</string>
+    <string name="multiplying">Multiplying</string>
 </resources>

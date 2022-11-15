@@ -1,5 +1,6 @@
-package com.example.smartcalculator.Solution.Solver;
+package com.example.smartcalculator;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,15 +8,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.smartcalculator.R;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentSolution#newInstance} factory method to
+ * Use the {@link SolutFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentSolution extends Fragment {
+public class SolutFragment extends Fragment implements View.OnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,10 @@ public class FragmentSolution extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public FragmentSolution() {
+    Button ButtonFullSolution;
+    Button ButtonThemes;
+
+    public SolutFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +39,11 @@ public class FragmentSolution extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentSolution.
+     * @return A new instance of fragment SolutFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentSolution newInstance(String param1, String param2) {
-        FragmentSolution fragment = new FragmentSolution();
+    public static SolutFragment newInstance(String param1, String param2) {
+        SolutFragment fragment = new SolutFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -57,10 +60,35 @@ public class FragmentSolution extends Fragment {
         }
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_solution, container, false);
+        View view = inflater.inflate(R.layout.fragment_solut, container, false);
+        ButtonFullSolution = (Button) view.findViewById(R.id.buttonFullSolution);
+        ButtonThemes = (Button) view.findViewById(R.id.buttonThemes);
+
+        ButtonFullSolution.setOnClickListener(this);
+        ButtonThemes.setOnClickListener(this);
+
+
+        return view ;
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.buttonThemes:
+                Intent intent1 = new Intent(getActivity(), ThemesActivity.class);
+                startActivity(intent1);
+                break;
+
+            case R.id.buttonFullSolution:
+                Intent intent2 = new Intent(getActivity(),  SolutionActivity.class);
+                startActivity(intent2);
+                break;
+        }
     }
 }
