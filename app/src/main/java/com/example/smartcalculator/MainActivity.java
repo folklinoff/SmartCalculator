@@ -3,15 +3,12 @@ package com.example.smartcalculator;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
-import android.content.Intent;
 import android.os.PersistableBundle;
 import android.view.View.OnClickListener;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,15 +16,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.smartcalculator.Solution.Solver.FragmentSolution;
-
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
 private final String TAG=this.getClass().getSimpleName();//для логов глобальная переменнная почему не статик
 
 FragmentSigns fragmentSigns=new FragmentSigns();
 FragmentNumbers fragmentNumbers=new FragmentNumbers();
-FragmentSolution fragmentSolution=new FragmentSolution();
+SolutFragment fragmentSolution=new SolutFragment();
 
 
     @Override
