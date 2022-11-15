@@ -36,7 +36,7 @@ FragmentSolution fragmentSolution=new FragmentSolution();
         setContentView(R.layout.activity_main);
         EditText editText=(EditText)findViewById(R.id.editTextTextMultiLine);
 
-        setNewFragment(fragmentSigns);
+        setNewFragment(fragmentNumbers);
 
 
         final Button ButtonSigns=(Button)findViewById(R.id.buttonSigns);
@@ -49,8 +49,19 @@ FragmentSolution fragmentSolution=new FragmentSolution();
 
        /* manager=getSupportFragmentManager();*/
 
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
 
     }
+
 
 
     @Override
@@ -61,6 +72,7 @@ FragmentSolution fragmentSolution=new FragmentSolution();
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        setNewFragment(fragmentNumbers);
         super.onRestoreInstanceState(savedInstanceState);
     }
 
@@ -86,10 +98,12 @@ FragmentSolution fragmentSolution=new FragmentSolution();
         switch (id){
             case R.id.menuSupport://как использовать калькуль
                 Toast.makeText(MainActivity.this,"It is not ready",Toast.LENGTH_LONG).show();
+                Intent intent=new Inten
+               startActivity();
                 break;
             case R.id.menuHelp://решение
                 Toast.makeText(MainActivity.this,"It is not ready too",Toast.LENGTH_LONG).show();
-                setContentView(R.layout.activity_themes);
+                //setContentView(R.layout.activity_themes);
                 break;
             default:
                 break;
