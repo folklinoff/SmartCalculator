@@ -38,4 +38,5 @@
     <string name="substraction">Substraction</string>
     <string name="division">Division</string>
     <string name="multiplying">Multiplying</string>
+    <string name="answer">Answer</string>
 </resources>

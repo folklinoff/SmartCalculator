@@ -1,5 +1,7 @@
 package com.example.smartcalculator.Solution;
 
+import android.widget.TextView;
+
 import com.example.smartcalculator.Solution.Solver.Solver;
 
 public class Main {
@@ -24,7 +26,10 @@ public class Main {
         expression = ExpressionTransformer.replaceMinuses(expression);
         Coefficients coefficients = Decomposer.decompose(expression);
         CoefficientsTransformer.deleteZeros(coefficients);
+        TextView textView=new TextView(R.id.textViewForFragmentSolut);
 
+        textView=(TextView)findViewById(R.id.TextView01);
+        textView.setText("Step One: blast egg");
         return Solver.getAnswer(coefficients).toString();
     }
 
