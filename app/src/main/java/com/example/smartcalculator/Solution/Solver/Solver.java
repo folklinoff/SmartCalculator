@@ -7,14 +7,10 @@ import java.util.Map;
 public abstract class Solver {
     public static Double getCoefficientAt(Coefficients coefficients, int power)
     {
-        try
-        {
+        if (coefficients.containsKey(power))
             return coefficients.get(power);
-        }
-        catch (Exception e)
-        {
-            return 0.0d;
-        }
+        else
+            return 0.0;
     }
 
     public static int getMaxPower(Coefficients coefficients)
