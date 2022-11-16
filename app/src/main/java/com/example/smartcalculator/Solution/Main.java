@@ -1,10 +1,7 @@
 package com.example.smartcalculator.Solution;
 
-import android.view.View;
-import android.widget.TextView;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.smartcalculator.R;
+import androidx.appcompat.app.AppCompatActivity;
 import com.example.smartcalculator.Solution.Solver.Solver;
 
 public class Main extends AppCompatActivity {
