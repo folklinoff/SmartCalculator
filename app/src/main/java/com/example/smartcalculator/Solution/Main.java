@@ -1,10 +1,13 @@
 package com.example.smartcalculator.Solution;
 
+import android.view.View;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.smartcalculator.R;
 import com.example.smartcalculator.Solution.Solver.Solver;
 
-public class Main {
+public class Main extends AppCompatActivity {
     public static void main(String[] args) {
         String[] expressions = {
                 "7 = 0",
@@ -20,16 +23,14 @@ public class Main {
         }
     }
 
-    public static String test(String expression) {
+    public static String test(String expression) {//я так понимаю придется создать обект так как метод больше не статический
         expression = ExpressionTransformer.deleteSpaces(expression);
         expression = ExpressionTransformer.addMultiplicationOperators(expression);
         expression = ExpressionTransformer.replaceMinuses(expression);
         Coefficients coefficients = Decomposer.decompose(expression);
         CoefficientsTransformer.deleteZeros(coefficients);
-        TextView textView=new TextView(R.id.textViewForFragmentSolut);
 
-        textView=(TextView)findViewById(R.id.TextView01);
-        textView.setText("Step One: blast egg");
+
         return Solver.getAnswer(coefficients).toString();
     }
 

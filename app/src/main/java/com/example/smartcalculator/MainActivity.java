@@ -1,5 +1,7 @@
 package com.example.smartcalculator;
 
+import static com.example.smartcalculator.Solution.Main.test;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -14,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
@@ -23,7 +26,7 @@ private final String TAG=this.getClass().getSimpleName();//для логов г�
 FragmentSigns fragmentSigns=new FragmentSigns();
 FragmentNumbers fragmentNumbers=new FragmentNumbers();
 SolutFragment fragmentSolution=new SolutFragment();
-
+    String expression;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,10 @@ SolutFragment fragmentSolution=new SolutFragment();
         final Button ButtonSigns=(Button)findViewById(R.id.buttonSigns);
         final Button ButtonNumbers=(Button)findViewById(R.id.buttonNumbers);
         final Button ButtonSolution=(Button)findViewById(R.id.buttonSolution);
+
+
+        expression=editText.getText().toString();
+
 
         ButtonNumbers.setOnClickListener( this);
         ButtonSolution.setOnClickListener( this);
@@ -119,6 +126,14 @@ SolutFragment fragmentSolution=new SolutFragment();
         switch (v.getId()){
             case R.id.buttonSolution:
                 setNewFragment(fragmentSolution);
+
+                String answer=test(expression);
+                Bundle bundle = new Bundle();
+                bundle.putString("edittext", answer);
+
+                fragmentSolution.setArguments(bundle);
+
+
                 break;
             case R.id.buttonNumbers:
                 setNewFragment(fragmentNumbers);

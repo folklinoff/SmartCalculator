@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +29,7 @@ public class SolutFragment extends Fragment implements View.OnClickListener {
 
     Button ButtonFullSolution;
     Button ButtonThemes;
+    TextView textView;
 
     public SolutFragment() {
         // Required empty public constructor
@@ -68,9 +70,13 @@ public class SolutFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_solut, container, false);
         ButtonFullSolution = (Button) view.findViewById(R.id.buttonFullSolution);
         ButtonThemes = (Button) view.findViewById(R.id.buttonThemes);
+        textView=(TextView) view.findViewById( R.id.textViewForFragmentSolut);
 
         ButtonFullSolution.setOnClickListener(this);
         ButtonThemes.setOnClickListener(this);
+
+         String strtext = getArguments().getString("edittext");
+        textView.setText(strtext);
 
 
         return view ;
