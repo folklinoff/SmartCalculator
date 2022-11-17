@@ -67,8 +67,24 @@ public class ThemesActivity extends AppCompatActivity implements View.OnClickLis
        addNewButton();
     }
 
-   public void addNewButton(){
 
+
+    View.OnLongClickListener onLongClickListener= new View.OnLongClickListener(){
+        @Override
+        public boolean onLongClick(View v) {
+            ButtonTemp.setText("opa!");
+
+
+
+
+            return true;
+        }
+
+    };
+
+
+
+   public void addNewButton(){
       if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() - 1).getText()!="Write your theme"){
 
           ButtonTemp=new Button(this);
@@ -77,13 +93,7 @@ public class ThemesActivity extends AppCompatActivity implements View.OnClickLis
           ButtonTemp.setLayoutParams(Param);
           linearLayout.addView(ButtonTemp);
           ButtonTemp.setOnClickListener(this);
-
-          ButtonTemp.setOnLongClickListener(new View.OnLongClickListener() {
-              public boolean onLongClick(View v) {
-                  ButtonTemp.setText("opa!");
-                  return true;
-              }
-          });
+          ButtonTemp.setOnLongClickListener(onLongClickListener);
       }
 
    }
