@@ -2,21 +2,20 @@
 package com.example.smartcalculator;
 
 
-
-import android.content.ContentValues;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.ViewGroup.LayoutParams;
+import android.os.IBinder;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
+import android.content.Context;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.smartcalculator.Solution.TableThemes;
-import android.os.Bundle;
 
 import java.util.ArrayList;
 
@@ -32,9 +31,25 @@ public class ThemesActivity extends AppCompatActivity {
     Button ButtonThemeSubstraction;
     Button ButtonTemp;
 
+    ServiceForNewButton mService;
+    private boolean isBound;
 
+    ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            // используем mService экземпляр класса для доступа к публичному LocalService
+            ServiceForNewButton.LocalService localService = (ServiceForNewButton.LocalService) service;
+            mService = localService.getService();
+            isBound = true;
+        }
 
-    @Override
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            isBound = false;
+        }
+    };
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -73,8 +88,8 @@ public class ThemesActivity extends AppCompatActivity {
             Bundle mBundle = new Bundle();
             mBundle.putBundle(arrayListOfButtonsThemes);
             mIntent.putExtras(mBundle);*/
-            startService(new Intent(this, ServiceForNewButton.class));
-
+            mService.startService(new Intent(this, ServiceForNewButton.class));
+            mService.createNewButton(arrayListOfButtonsThemes, ButtonTemp, linearLayout, onLongClickListener, onClickListener);
         }
 
 //tableThemes= new TableThemes(context, DATABASE_NAME, null, DATABASE_VERSION);
