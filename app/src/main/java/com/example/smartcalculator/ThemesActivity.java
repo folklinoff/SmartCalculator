@@ -62,14 +62,24 @@ public class ThemesActivity extends AppCompatActivity {
         ButtonThemeDivision.setOnClickListener(onClickListener);
         ButtonThemeSubstraction.setOnClickListener(onClickListener);
 
-        if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() - 1).getText()!="Write your theme") {
+        ButtonThemeMultiplying.setOnLongClickListener(onLongClickListener);
+        ButtonThemeDivision.setOnLongClickListener(onLongClickListener);
+        ButtonThemeSubstraction.setOnLongClickListener(onLongClickListener);
+
+        //onBind();
+
+        if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() -1).getText()!="Write your theme") {
+           /* Intent mIntent = new Intent(ThemesActivity.this, ServiceForNewButton.class);
+            Bundle mBundle = new Bundle();
+            mBundle.putBundle(arrayListOfButtonsThemes);
+            mIntent.putExtras(mBundle);*/
             startService(new Intent(this, ServiceForNewButton.class));
+
         }
 
 //tableThemes= new TableThemes(context, DATABASE_NAME, null, DATABASE_VERSION);
 
 
-       /*addNewButton();*/
     }
 
     @Override
@@ -92,13 +102,13 @@ public class ThemesActivity extends AppCompatActivity {
     View.OnClickListener onClickListener= new View.OnClickListener(){
         @Override
         public void onClick(View v) {
-            ButtonTemp.setText("opa!");
+
         }
     };
 
 
 
- /*  public void addNewButton(){
+ public void addNewButton(){
       if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() - 1).getText()!="Write your theme"){
 
           ButtonTemp=new Button(this);
@@ -110,6 +120,6 @@ public class ThemesActivity extends AppCompatActivity {
           ButtonTemp.setOnLongClickListener(onLongClickListener);
       }
 
-   }*/
+   }
 
 }

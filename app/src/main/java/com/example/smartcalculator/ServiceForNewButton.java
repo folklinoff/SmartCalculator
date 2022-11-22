@@ -21,6 +21,7 @@ public class ServiceForNewButton extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+        Log.d(LOG_TAG, "onBind");
         return null;
     }
 
@@ -30,15 +31,20 @@ public class ServiceForNewButton extends Service {
         Log.d(LOG_TAG, "onCreate");
     }
 
-    public void onStartCommand(Intent intent,
+
+    public int onStartCommand(Intent intent,
                                ArrayList<Button>arrayListOfButtonsThemes ,
                                Button ButtonTemp,
                                LinearLayout linearLayout,
                                View.OnLongClickListener onLongClickListener,
                                View.OnClickListener onClickListener) {
         Log.d(LOG_TAG, "onStartCommand");
-        createNewButton(arrayListOfButtonsThemes, ButtonTemp, linearLayout,onLongClickListener,onClickListener);
-        /*  return super.onStartCommand(intent);*/
+
+
+        if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() -1).getText()!="Write your theme") {
+            createNewButton(arrayListOfButtonsThemes, ButtonTemp, linearLayout, onLongClickListener, onClickListener);
+        }
+        return Service.START_STICKY;
     }
 
     public void onDestroy() {
