@@ -12,6 +12,7 @@
         <activity
             android:name=".SolutionActivity"
             android:exported="false" />
+        <service android:name=".ServiceForNewButton"/>
         <activity
             android:name=".ThemesActivity"
             android:exported="false" />

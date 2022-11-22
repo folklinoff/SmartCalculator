@@ -1,7 +1,9 @@
+
 package com.example.smartcalculator;
 
 
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -19,7 +21,7 @@ import android.os.Bundle;
 import java.util.ArrayList;
 
 
-public class ThemesActivity extends AppCompatActivity implements View.OnClickListener {
+public class ThemesActivity extends AppCompatActivity {
 
     TableThemes tableThemes ;
 
@@ -56,35 +58,47 @@ public class ThemesActivity extends AppCompatActivity implements View.OnClickLis
 
 
 
-        ButtonThemeMultiplying.setOnClickListener(this);
-        ButtonThemeDivision.setOnClickListener(this);
-        ButtonThemeSubstraction.setOnClickListener(this);
+        ButtonThemeMultiplying.setOnClickListener(onClickListener);
+        ButtonThemeDivision.setOnClickListener(onClickListener);
+        ButtonThemeSubstraction.setOnClickListener(onClickListener);
+
+        if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() - 1).getText()!="Write your theme") {
+            startService(new Intent(this, ServiceForNewButton.class));
+        }
+
+//tableThemes= new TableThemes(context, DATABASE_NAME, null, DATABASE_VERSION);
 
 
-
-
-
-       addNewButton();
+       /*addNewButton();*/
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(new Intent(this, ServiceForNewButton.class));
+    }
 
 
     View.OnLongClickListener onLongClickListener= new View.OnLongClickListener(){
         @Override
         public boolean onLongClick(View v) {
             ButtonTemp.setText("opa!");
-
-
-
-
             return true;
         }
 
     };
 
 
+    View.OnClickListener onClickListener= new View.OnClickListener(){
+        @Override
+        public void onClick(View v) {
+            ButtonTemp.setText("opa!");
+        }
+    };
 
-   public void addNewButton(){
+
+
+ /*  public void addNewButton(){
       if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() - 1).getText()!="Write your theme"){
 
           ButtonTemp=new Button(this);
@@ -92,17 +106,10 @@ public class ThemesActivity extends AppCompatActivity implements View.OnClickLis
           LayoutParams Param = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
           ButtonTemp.setLayoutParams(Param);
           linearLayout.addView(ButtonTemp);
-          ButtonTemp.setOnClickListener(this);
+          ButtonTemp.setOnClickListener(onClickListener);
           ButtonTemp.setOnLongClickListener(onLongClickListener);
       }
 
-   }
+   }*/
 
-
-
-
-    @Override
-    public void onClick(View v) {
-
-    }
 }
