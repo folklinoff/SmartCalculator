@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -18,6 +19,7 @@ public class ServiceForNewButton extends Service {
 
     final String LOG_TAG = "myLogs";
 
+    private final IBinder mBinder = new LocalService();
 
     @Nullable
     @Override
@@ -42,6 +44,7 @@ public class ServiceForNewButton extends Service {
      /*   if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() -1).getText()!="Write your theme") {
             createNewButton(arrayListOfButtonsThemes, ButtonTemp, linearLayout, onLongClickListener, onClickListener);
         }*/
+        Log.d(LOG_TAG, "onStartCommand");
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -69,18 +72,22 @@ public class ServiceForNewButton extends Service {
 
     void createNewButton(ArrayList<Button>arrayListOfButtonsThemes,
                          Button ButtonTemp,
+                         ViewGroup.LayoutParams Param,
                          LinearLayout linearLayout,
                          View.OnLongClickListener onLongClickListener,
                          View.OnClickListener onClickListener) {
 
             ButtonTemp= new Button(this);
             ButtonTemp.setText("Write your theme");
-            ViewGroup.LayoutParams Param = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             ButtonTemp.setLayoutParams(Param);
             linearLayout.addView(ButtonTemp);
             ButtonTemp.setOnClickListener(onClickListener);
             ButtonTemp.setOnLongClickListener(onLongClickListener);
 
 
+    }
+
+    void proverka(){
+        addNewButton();
     }
 }

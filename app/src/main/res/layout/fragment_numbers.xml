@@ -11,6 +11,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:background="#B32F6831"
             android:layout_width="339dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -20,16 +21,18 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatButton
+                    android:background="@drawable/bshape"
                     android:id="@+id/button1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/bshape"
+
                     android:text="@string/button_1" />
 
                 <androidx.appcompat.widget.AppCompatButton
