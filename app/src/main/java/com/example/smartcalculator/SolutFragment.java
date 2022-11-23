@@ -95,6 +95,10 @@ public class SolutFragment extends Fragment implements View.OnClickListener {
                 Intent intent2 = new Intent(getActivity(),  SolutionActivity.class);
                 startActivity(intent2);
                 break;
+            case R.id.buttonSolution:
+                String strtext = getArguments().getString("edittext");
+                textView.setText(strtext);
+                break;
         }
     }
 }

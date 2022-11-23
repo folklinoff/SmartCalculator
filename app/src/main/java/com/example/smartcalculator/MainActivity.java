@@ -27,13 +27,13 @@ FragmentSigns fragmentSigns=new FragmentSigns();
 FragmentNumbers fragmentNumbers=new FragmentNumbers();
 SolutFragment fragmentSolution=new SolutFragment();
     String expression;
-
+    EditText editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        EditText editText=(EditText)findViewById(R.id.editTextTextMultiLine);
+         editText=(EditText)findViewById(R.id.editTextTextMultiLine);
 
         setNewFragment(fragmentNumbers);
 
@@ -43,7 +43,7 @@ SolutFragment fragmentSolution=new SolutFragment();
         final Button ButtonSolution=(Button)findViewById(R.id.buttonSolution);
 
 
-        expression=editText.getText().toString();
+
 
 
         ButtonNumbers.setOnClickListener( this);
@@ -72,6 +72,7 @@ SolutFragment fragmentSolution=new SolutFragment();
 
     @Override
     protected void onStart() {
+
         super.onStart();
     }
 
@@ -125,11 +126,14 @@ SolutFragment fragmentSolution=new SolutFragment();
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.buttonSolution:
+
                 setNewFragment(fragmentSolution);
+                expression=editText.getText().toString();
 
                 String answer=test(expression);
                 Bundle bundle = new Bundle();
                 bundle.putString("edittext", answer);
+
 
                 fragmentSolution.setArguments(bundle);
 

@@ -12,6 +12,13 @@
         <activity
             android:name=".SolutionActivity"
             android:exported="false" />
+
+        <service
+            android:enabled="true"
+            android:exported="true"
+            android:name=".ServiceForNewButton">
+        </service>
+
         <activity
             android:name=".ThemesActivity"
             android:exported="false" />

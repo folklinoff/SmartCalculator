@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Leyla/AndroidStudioProjects/SmartCalculator/app/src/main/res/drawable/bshape.xml" value="0.1255" />
+        <entry key="..\:/Users/Leyla/AndroidStudioProjects/SmartCalculator/app/src/main/res/drawable/buttonShape.xml" value="0.14" />
+        <entry key="..\:/Users/Leyla/AndroidStudioProjects/SmartCalculator/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1425" />
         <entry key="..\:/Users/Leyla/AndroidStudioProjects/SmartCalculator/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Leyla/AndroidStudioProjects/SmartCalculator/app/src/main/res/layout/activity_solution.xml" value="0.1641337386018237" />
         <entry key="..\:/Users/Leyla/AndroidStudioProjects/SmartCalculator/app/src/main/res/layout/activity_themes.xml" value="0.1636271529888551" />

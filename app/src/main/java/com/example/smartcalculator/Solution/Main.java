@@ -20,7 +20,7 @@ public class Main extends AppCompatActivity {
         }
     }
 
-    public static String test(String expression) {//я так понимаю придется создать обект так как метод больше не статический
+    public static String test(String expression) {
         expression = ExpressionTransformer.deleteSpaces(expression);
         expression = ExpressionTransformer.addMultiplicationOperators(expression);
         expression = ExpressionTransformer.replaceMinuses(expression);
