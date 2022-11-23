@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View.OnClickListener;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,7 +32,7 @@ SolutFragment fragmentSolution=new SolutFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.e(TAG, "onCreate");
         setContentView(R.layout.activity_main);
          editText=(EditText)findViewById(R.id.editTextTextMultiLine);
 
