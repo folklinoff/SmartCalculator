@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class ThemesActivity extends AppCompatActivity implements ServiceCallbacks{
 
-    final String LOG_ThemesActivity = "LOG_ThemesActivity";
+    final String LOG_ThemesActivity = this.getClass().getSimpleName();;
 
     TableThemes tableThemes ;
 
@@ -48,6 +48,7 @@ public class ThemesActivity extends AppCompatActivity implements ServiceCallback
             mService = localService.getService();
             isBound = true;
 
+            Log.d(LOG_ThemesActivity, "onServiceConnected");
            mService.setCallbacks(ThemesActivity.this);
 
         }
@@ -109,7 +110,8 @@ public class ThemesActivity extends AppCompatActivity implements ServiceCallback
     protected void onStart() {
         super.onStart();
         Intent intent = new Intent(this, ServiceForNewButton.class);
-        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+        getApplicationContext().bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+        startService(intent);/////////////
     }
 
     @Override
@@ -157,6 +159,7 @@ return false;
 
     @Override
 public void addNewButton(){
+        Log.d(LOG_ThemesActivity, "addNewButton");
           ButtonTemp=new Button(this);
           ButtonTemp.setText("Write your theme");
           LayoutParams Param = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);

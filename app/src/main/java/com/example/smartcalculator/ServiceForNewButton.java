@@ -13,7 +13,7 @@ public class ServiceForNewButton extends Service {
     final String LOG_TAG = "myLogs";
 
     private final IBinder mBinder = new LocalBinder();
-private ServiceCallbacks serviceCallbacks;
+    private ServiceCallbacks serviceCallbacks;
 
 
 
@@ -29,15 +29,26 @@ private ServiceCallbacks serviceCallbacks;
         super.onCreate();
         Log.d(LOG_TAG, "onCreate");
     }
-    public class LocalBinder extends Binder {
+    public class LocalBinder extends Binder{
 
         ServiceForNewButton getService(){
             return ServiceForNewButton.this;
         }
+
+
+        public PodSeviceStub(PodService service) {// added a constructor for Stub here
+            mService = new WeakReference<PodService>(service);
+
+        }
+
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+       if (serviceCallbacks.checkButton()){
+
+        serviceCallbacks.addNewButton();}
+
 
         Log.d(LOG_TAG, "onStartCommand");
         return super.onStartCommand(intent, flags, startId);
