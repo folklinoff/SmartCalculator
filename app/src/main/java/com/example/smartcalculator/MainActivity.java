@@ -34,7 +34,7 @@ SolutFragment fragmentSolution=new SolutFragment();
         super.onCreate(savedInstanceState);
         Log.e(TAG, "onCreate");
         setContentView(R.layout.activity_main);
-         editText=(EditText)findViewById(R.id.editTextTextMultiLine);
+        editText=(EditText)findViewById(R.id.editTextTextMultiLine);
 
         setNewFragment(fragmentNumbers);
 
