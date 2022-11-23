@@ -5,27 +5,23 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-
-import java.util.ArrayList;
 
 public class ServiceForNewButton extends Service {
 
     final String LOG_TAG = "myLogs";
 
-    private final IBinder mBinder = new LocalService();
+    private final IBinder mBinder = new LocalBinder();
+private ServiceCallbacks serviceCallbacks;
+
+
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         Log.d(LOG_TAG, "onBind");
-        return null;
+        return mBinder;
     }
 
     @Override
@@ -33,61 +29,47 @@ public class ServiceForNewButton extends Service {
         super.onCreate();
         Log.d(LOG_TAG, "onCreate");
     }
-    public class LocalService extends Binder {
+    public class LocalBinder extends Binder {
 
         ServiceForNewButton getService(){
             return ServiceForNewButton.this;
         }
     }
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-     /*   if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() -1).getText()!="Write your theme") {
-            createNewButton(arrayListOfButtonsThemes, ButtonTemp, linearLayout, onLongClickListener, onClickListener);
-        }*/
+
         Log.d(LOG_TAG, "onStartCommand");
         return super.onStartCommand(intent, flags, startId);
     }
 
-
-    /*@Override
-    public int onStartCommand(Intent intent,
-                               ArrayList<Button>arrayListOfButtonsThemes ,
-                               Button ButtonTemp,
-                               LinearLayout linearLayout,
-                               View.OnLongClickListener onLongClickListener,
-                               View.OnClickListener onClickListener,int flags,int startId) {
-        Log.d(LOG_TAG, "onStartCommand");
-
-
-        if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() -1).getText()!="Write your theme") {
-            createNewButton(arrayListOfButtonsThemes, ButtonTemp, linearLayout, onLongClickListener, onClickListener);
-        }
-        return super.onStartCommand(intent, flags, startId);
-    }*/
+    public void setCallbacks(ServiceCallbacks callbacks){
+        serviceCallbacks=callbacks;
+    }
 
     public void onDestroy() {
         super.onDestroy();
         Log.d(LOG_TAG, "onDestroy");
     }
 
-    void createNewButton(ArrayList<Button>arrayListOfButtonsThemes,
+    /*void createNewButton(ArrayList<Button>arrayListOfButtonsThemes,
                          Button ButtonTemp,
                          ViewGroup.LayoutParams Param,
                          LinearLayout linearLayout,
                          View.OnLongClickListener onLongClickListener,
                          View.OnClickListener onClickListener) {
-
-            ButtonTemp= new Button(this);
+       // if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() -1).getText()!="Write your theme") {
+            ButtonTemp = new Button(this);
             ButtonTemp.setText("Write your theme");
             ButtonTemp.setLayoutParams(Param);
             linearLayout.addView(ButtonTemp);
             ButtonTemp.setOnClickListener(onClickListener);
             ButtonTemp.setOnLongClickListener(onLongClickListener);
 
-
+        //}
     }
-
-    void proverka(){
+*/
+    /*void proverka(){
         addNewButton();
-    }
+    }*/
 }

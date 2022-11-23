@@ -8,6 +8,7 @@ import android.content.ServiceConnection;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -23,8 +24,9 @@ import com.example.smartcalculator.Solution.TableThemes;
 import java.util.ArrayList;
 
 
-public class ThemesActivity extends AppCompatActivity {
+public class ThemesActivity extends AppCompatActivity implements ServiceCallbacks{
 
+    final String LOG_ThemesActivity = "LOG_ThemesActivity";
 
     TableThemes tableThemes ;
 
@@ -42,9 +44,12 @@ public class ThemesActivity extends AppCompatActivity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             // используем mService экземпляр класса для доступа к публичному ServiceForNewButton
-            ServiceForNewButton.LocalService localService = (ServiceForNewButton.LocalService) service;
+            ServiceForNewButton.LocalBinder localService = (ServiceForNewButton.LocalBinder) service;
             mService = localService.getService();
             isBound = true;
+
+           mService.setCallbacks(ThemesActivity.this);
+
         }
 
         @Override
@@ -56,6 +61,8 @@ public class ThemesActivity extends AppCompatActivity {
         @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+            Log.d(LOG_ThemesActivity, "onCreate");
 
         setContentView(R.layout.activity_themes);
 
@@ -86,12 +93,15 @@ public class ThemesActivity extends AppCompatActivity {
         ButtonThemeSubstraction.setOnLongClickListener(onLongClickListener);
 
 
+
+
+
             ViewGroup.LayoutParams Param = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() -1).getText()!="Write your theme") {
-            //mService.createNewButton(arrayListOfButtonsThemes, ButtonTemp, Param, linearLayout, onLongClickListener, onClickListener);
+       /* if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() -1).getText()!="Write your theme") {
+            mService.createNewButton(arrayListOfButtonsThemes, ButtonTemp, Param, linearLayout, onLongClickListener, onClickListener);
             //mService.proverka();
-            mService.
-        }
+
+        }*/
 
     }
 
@@ -101,6 +111,7 @@ public class ThemesActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ServiceForNewButton.class);
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -135,9 +146,17 @@ public class ThemesActivity extends AppCompatActivity {
 
 
 
- public void addNewButton(){
-      if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() - 1).getText()!="Write your theme"){
+    @Override
+    public boolean checkButton() {
+        Log.d(LOG_ThemesActivity, "checkButton");
+        if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() - 1).getText()!="Write your theme") {
+return false;
+        } else return true;
+    }
 
+
+    @Override
+public void addNewButton(){
           ButtonTemp=new Button(this);
           ButtonTemp.setText("Write your theme");
           LayoutParams Param = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
@@ -145,8 +164,7 @@ public class ThemesActivity extends AppCompatActivity {
           linearLayout.addView(ButtonTemp);
           ButtonTemp.setOnClickListener(onClickListener);
           ButtonTemp.setOnLongClickListener(onLongClickListener);
+          arrayListOfButtonsThemes.add(ButtonTemp);
       }
-
-   }
 
 }
