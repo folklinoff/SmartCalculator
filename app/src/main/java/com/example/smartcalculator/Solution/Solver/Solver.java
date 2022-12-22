@@ -25,16 +25,14 @@ public abstract class Solver {
 
     public static EquationType getEquationType (Coefficients coefficients)
     {
-        int highestPower = getMaxPower(coefficients);
         return EquationType.typeOf(Math.min(getMaxPower(coefficients), 3));
     }
 
     public static Answer getAnswer(Coefficients coefficients)
     {
-        EquationType equationType = getEquationType(coefficients);
         switch (getEquationType(coefficients)) {
             case value:
-                return ConstantEquationSolver.getAnswer(coefficients);
+                return ConstantEquationSolver.getAnswer();
             case linearEquation:
                 return LinearEquationSolver.getAnswer(coefficients);
             case quadraticEquation:

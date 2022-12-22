@@ -1,11 +1,8 @@
 package com.example.smartcalculator.Solution.Solver;
 
-import com.example.smartcalculator.Solution.Coefficients;
-
 public class ConstantEquationSolver extends Solver
 {
-
-    public static Answer getAnswer(Coefficients coefficients)
+    public static Answer getAnswer()
     {
         return new Answer("Equation doesn't have any solutions");
     }

@@ -1,17 +1,17 @@
 package com.example.smartcalculator.Solution;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class Coefficients extends TreeMap<Integer, Double> {
-    Coefficients()
-    {
+    Coefficients() {
         super();
     }
 
-    Coefficients(Coefficients c1)
-    {
+    Coefficients(Coefficients c1) {
         super(c1);
     }
 
@@ -35,8 +35,8 @@ public class Coefficients extends TreeMap<Integer, Double> {
         return super.containsKey(key);
     }
 
-    public Set<Entry<Integer, Double>> entrySet()
-    {
+    @NotNull
+    public Set<Entry<Integer, Double>> entrySet() {
         TreeSet<Entry<Integer, Double>> result = new TreeSet<>((o1, o2) -> {
             if (o1.getKey() > o2.getKey())
                 return -1;

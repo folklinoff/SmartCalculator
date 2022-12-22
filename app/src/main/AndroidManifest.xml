@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.smartcalculator">
+          xmlns:tools="http://schemas.android.com/tools" package="com.example.smartcalculator">
 
     <application
         android:allowBackup="true"
@@ -11,18 +11,24 @@
         android:theme="@style/Theme.SmartCalculator">
         <activity
             android:name=".SolutionActivity"
-            android:exported="false" />
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.smartcalculator.SolutionActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
 
         <service
-            android:enabled="true"
-            android:exported="true"
-            android:name=".ServiceForNewButton">
-
+                android:enabled="true"
+                android:name="com.example.smartcalculator.ServiceForNewButton">
         </service>
+
 
         <activity
             android:name=".ThemesActivity"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
