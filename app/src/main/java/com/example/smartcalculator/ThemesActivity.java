@@ -3,7 +3,6 @@ package com.example.smartcalculator;
 
 
 import android.content.ComponentName;
-import android.content.Intent;
 import android.content.ServiceConnection;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.content.Context;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -93,8 +91,6 @@ public class ThemesActivity extends AppCompatActivity implements ServiceCallback
     protected void onStart() {
         super.onStart();
 
-        Intent intent = new Intent(this, ServiceForNewButton.class);
-        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
 
 
     }
@@ -102,10 +98,7 @@ public class ThemesActivity extends AppCompatActivity implements ServiceCallback
     @Override
     protected void onStop() {
         super.onStop();
-        mService.setCallbacks(null);
-        if (isBound) {
-            unbindService(serviceConnection);
-        }
+
     }
 
 
@@ -128,6 +121,21 @@ public class ThemesActivity extends AppCompatActivity implements ServiceCallback
     View.OnClickListener onClickListener= new View.OnClickListener(){
         @Override
         public void onClick(View v) {
+            int id=v.getId();
+            switch (id){
+                case R.id.buttonThemeMultiplying:
+                    setContentView(R.layout.activity_theme);
+                    break;
+                case R.id.buttonThemeDivision:
+                    setContentView(R.layout.activity_theme);
+                    break;
+                case R.id.buttonThemeSubstraction:
+                    setContentView(R.layout.activity_theme);
+                    break;
+                default:
+                    break;
+
+            }
 
         }
     };

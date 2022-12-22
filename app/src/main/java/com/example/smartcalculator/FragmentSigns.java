@@ -30,6 +30,7 @@ public class FragmentSigns extends Fragment implements View.OnClickListener { //
     Button ButtonRightBracket;
     Button ButtonDivision;
     Button ButtonSQRT;
+    Button ButtonDelete;
 
     public FragmentSigns() {
         // Required empty public constructor
@@ -69,6 +70,8 @@ public class FragmentSigns extends Fragment implements View.OnClickListener { //
         ButtonMultiply = (Button) view.findViewById(R.id.buttonMultiply);
         ButtonDivision = (Button) view.findViewById(R.id.buttonDivision);
         ButtonEqual = (Button) view.findViewById(R.id.buttonEqual);
+        ButtonDelete = (Button) view.findViewById(R.id.buttonDelete);
+
         ButtonSQRT = (Button) view.findViewById(R.id.buttonSqrt);
         ButtonLeftBracket = (Button) view.findViewById(R.id.buttonleftbracket);
         ButtonRightBracket = (Button) view.findViewById(R.id.buttonrightbracket);
@@ -81,6 +84,7 @@ public class FragmentSigns extends Fragment implements View.OnClickListener { //
         ButtonSQRT.setOnClickListener(this);
         ButtonEqual.setOnClickListener(this);
         ButtonDivision.setOnClickListener(this);
+        ButtonDelete.setOnClickListener(this);
 
 
 
@@ -101,15 +105,14 @@ public class FragmentSigns extends Fragment implements View.OnClickListener { //
                 break;
 
             case R.id.buttonDelete:
-                str = str.replace(str.substring(str.length()-1), "");
-                line.pop();
+                str=  ((EditText)getActivity().findViewById(R.id.editTextTextMultiLine)).getText().toString();
+                str = str.substring(0, str.length() - 1);
+                ((EditText) getActivity().findViewById(R.id.editTextTextMultiLine)).setText(str);
                 break;
-
 
             case R.id.buttonMultiply:
                 str=  ((EditText)getActivity().findViewById(R.id.editTextTextMultiLine)).getText().toString();
                 str+='*';
-                line.push("*");
                 ((EditText) getActivity().findViewById(R.id.editTextTextMultiLine)).setText(str);
                 break;
             case R.id.buttonPlus:
@@ -129,7 +132,7 @@ public class FragmentSigns extends Fragment implements View.OnClickListener { //
                 break;
             case R.id.buttonSqrt:
                 str=  ((EditText)getActivity().findViewById(R.id.editTextTextMultiLine)).getText().toString();
-                str+="SQRT";
+                str+='√';
                 ((EditText) getActivity().findViewById(R.id.editTextTextMultiLine)).setText(str);
                 break;
             case R.id.buttonleftbracket:

@@ -72,6 +72,7 @@
 
     <EditText
         android:background="#B32F6831"
+        android:textIsSelectable="true"
         android:id="@+id/editTextTextMultiLine"
         android:layout_width="251dp"
         android:layout_height="101dp"

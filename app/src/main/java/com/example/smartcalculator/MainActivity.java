@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -108,10 +107,12 @@ SolutFragment fragmentSolution=new SolutFragment();
         int id=item.getItemId();
         switch (id){
             case R.id.menuThemes://как использовать калькуль
-                Toast.makeText(MainActivity.this,"Themes is not ready",Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this,"Themes is not ready",Toast.LENGTH_LONG).show();
+                setContentView(R.layout.activity_themes);
                 break;
             case R.id.menuCalculator://решение
-                Toast.makeText(MainActivity.this,"Сalculator is not ready",Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this,"Сalculator is not ready",Toast.LENGTH_LONG).show();
+                setContentView(R.layout.activity_main);
                 break;
             default:
                 break;
