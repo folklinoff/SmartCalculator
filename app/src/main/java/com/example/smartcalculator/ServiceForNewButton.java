@@ -35,24 +35,20 @@ public class ServiceForNewButton extends Service {
             return ServiceForNewButton.this;
         }
 
-
-        public PodSeviceStub(PodService service) {// added a constructor for Stub here
-            mService = new WeakReference<PodService>(service);
-
-        }
-
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
+
+
        if (serviceCallbacks.checkButton()){
 
         serviceCallbacks.addNewButton();}
 
 
         Log.d(LOG_TAG, "onStartCommand");
-        return super.onStartCommand(intent, flags, startId);
-    }
+        return super.onStartCommand(intent, flags, startId);}
 
     public void setCallbacks(ServiceCallbacks callbacks){
         serviceCallbacks=callbacks;
@@ -63,24 +59,6 @@ public class ServiceForNewButton extends Service {
         Log.d(LOG_TAG, "onDestroy");
     }
 
-    /*void createNewButton(ArrayList<Button>arrayListOfButtonsThemes,
-                         Button ButtonTemp,
-                         ViewGroup.LayoutParams Param,
-                         LinearLayout linearLayout,
-                         View.OnLongClickListener onLongClickListener,
-                         View.OnClickListener onClickListener) {
-       // if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() -1).getText()!="Write your theme") {
-            ButtonTemp = new Button(this);
-            ButtonTemp.setText("Write your theme");
-            ButtonTemp.setLayoutParams(Param);
-            linearLayout.addView(ButtonTemp);
-            ButtonTemp.setOnClickListener(onClickListener);
-            ButtonTemp.setOnLongClickListener(onLongClickListener);
 
-        //}
-    }
-*/
-    /*void proverka(){
-        addNewButton();
-    }*/
+
 }

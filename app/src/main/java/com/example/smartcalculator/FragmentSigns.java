@@ -1,15 +1,15 @@
 package com.example.smartcalculator;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.fragment.app.Fragment;
+
+import java.util.Stack;
 
 
 public class FragmentSigns extends Fragment implements View.OnClickListener { //передаем данные
@@ -17,7 +17,7 @@ public class FragmentSigns extends Fragment implements View.OnClickListener { //
     private static final String ARG_PARAM1 = "param1";
     public String mParam1;
 
-
+    Stack<String> line = new Stack<>();
 
 
     String str="";
@@ -96,12 +96,20 @@ public class FragmentSigns extends Fragment implements View.OnClickListener { //
 
                  str=  ((EditText)getActivity().findViewById(R.id.editTextTextMultiLine)).getText().toString();
                 str+='-';
+                line.push("-");
                 ((EditText) getActivity().findViewById(R.id.editTextTextMultiLine)).setText(str);
                 break;
+
+            case R.id.buttonDelete:
+                str = str.replace(str.substring(str.length()-1), "");
+                line.pop();
+                break;
+
 
             case R.id.buttonMultiply:
                 str=  ((EditText)getActivity().findViewById(R.id.editTextTextMultiLine)).getText().toString();
                 str+='*';
+                line.push("*");
                 ((EditText) getActivity().findViewById(R.id.editTextTextMultiLine)).setText(str);
                 break;
             case R.id.buttonPlus:
