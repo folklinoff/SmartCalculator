@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    android:background="@color/green"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ScrollView
+        android:background="#B32F6831"
         android:layout_width="312dp"
         android:layout_height="528dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -21,19 +22,22 @@
             android:orientation="vertical"
             android:id="@+id/linearLayoutThemes">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
+                android:background="@drawable/bshape"
                 android:id="@+id/buttonThemeMultiplying"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/multiplying" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
+                android:background="@drawable/bshape"
                 android:id="@+id/buttonThemeDivision"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/division" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
+                android:background="@drawable/bshape"
                 android:id="@+id/buttonThemeSubstraction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

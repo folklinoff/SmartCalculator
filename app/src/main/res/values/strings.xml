@@ -8,7 +8,7 @@
     <string name="button_2">2</string>
     <string name="button_3">3</string>
     <string name="button_4">4</string>
-    <string name="buttonDelete">4</string>
+    <string name="buttonDelete">del</string>
     <string name="button_5">5</string>
     <string name="button_6">6</string>
     <string name="button_7">7</string>
@@ -40,4 +40,9 @@
     <string name="division">Division</string>
     <string name="multiplying">Multiplying</string>
     <string name="answer">Answer</string>
+
+
+    <string name="buttonThemeMultiplying">You should to multiply</string>
+    <string name="buttonThemeDivision">You should to division</string>
+    <string name="buttonThemeSubtraction">You should to subtraction</string>
 </resources>
