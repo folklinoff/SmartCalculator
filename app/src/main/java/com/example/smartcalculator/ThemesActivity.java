@@ -40,24 +40,7 @@ public class ThemesActivity extends AppCompatActivity implements ServiceCallback
     ServiceForNewButton mService;
     private boolean isBound;
 
-    ServiceConnection serviceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            // используем mService экземпляр класса для доступа к публичному ServiceForNewButton
-            ServiceForNewButton.LocalBinder localService = (ServiceForNewButton.LocalBinder) service;
-            mService = localService.getService();
-            isBound = true;
 
-            Log.d(LOG_ThemesActivity, "onServiceConnected");
-           mService.setCallbacks(ThemesActivity.this);
-
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            isBound = false;
-        }
-    };
 
         @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -109,14 +92,17 @@ public class ThemesActivity extends AppCompatActivity implements ServiceCallback
     @Override
     protected void onStart() {
         super.onStart();
+
         Intent intent = new Intent(this, ServiceForNewButton.class);
-        getApplicationContext().bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
-        startService(intent);/////////////
+        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+
+
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        mService.setCallbacks(null);
         if (isBound) {
             unbindService(serviceConnection);
         }
@@ -151,11 +137,29 @@ public class ThemesActivity extends AppCompatActivity implements ServiceCallback
     @Override
     public boolean checkButton() {
         Log.d(LOG_ThemesActivity, "checkButton");
-        if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() - 1).getText()!="Write your theme") {
+        if(arrayListOfButtonsThemes.get(arrayListOfButtonsThemes.size() - 1).getText()=="Write your theme") {
 return false;
         } else return true;
     }
 
+    ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            // используем mService экземпляр класса для доступа к публичному ServiceForNewButton
+            ServiceForNewButton.LocalBinder localService = (ServiceForNewButton.LocalBinder) service;
+            mService = localService.getService();
+            isBound = true;
+
+            Log.d(LOG_ThemesActivity, "onServiceConnected");
+            mService.setCallbacks(ThemesActivity.this);
+
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            isBound = false;
+        }
+    };
 
     @Override
 public void addNewButton(){

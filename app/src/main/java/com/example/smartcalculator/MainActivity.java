@@ -2,23 +2,21 @@ package com.example.smartcalculator;
 
 import static com.example.smartcalculator.Solution.Main.test;
 
+import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
-
-import android.os.PersistableBundle;
-import android.util.Log;
-import android.view.View.OnClickListener;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
@@ -146,9 +144,15 @@ SolutFragment fragmentSolution=new SolutFragment();
             case R.id.buttonSigns:
                 setNewFragment(fragmentSigns);
                 break;
+
+
+
+
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());
         }
+
+
     }
 
 
